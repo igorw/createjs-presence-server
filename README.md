@@ -2,6 +2,14 @@
 
 Sample implementation of a presence server for createjs.
 
+## Install
+
+    npm install
+
+## Run
+
+    node app.js
+
 ## Peudo-spec
 
 ### POST /editing_entitiy
