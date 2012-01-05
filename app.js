@@ -10,7 +10,7 @@ app.post('/editing_entity', function(req, res) {
     var id = req.query.id;
 
     if (!id) {
-        res.send('No entity id given.', 400);
+        res.send('No entity id given.\n', 400);
         return;
     }
 
@@ -23,7 +23,7 @@ app.post('/done_editing_entity', function(req, res) {
     var id = req.query.id;
 
     if (!id) {
-        res.send('No entity id given.', 400);
+        res.send('No entity id given.\n', 400);
         return;
     }
 
@@ -36,7 +36,7 @@ app.get('/status', function(req, res) {
     var id = req.query.id;
 
     if (!id) {
-        res.send('No entity id given.', 400);
+        res.send('No entity id given.\n', 400);
         return;
     }
 
