@@ -2,12 +2,22 @@ var express = require('express'),
     app = express.createServer();
     entities = {};
 
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'x-requested-with');
+    res.header('Access-Control-Request-Method', 'GET,POST');
+    next();
+});
+
+app.use(express.logger());
+app.use(express.bodyParser());
+
 app.get('/', function(req, res) {
     res.send('createjs-presence-server');
 });
 
 app.post('/editing_entity', function(req, res) {
-    var id = req.query.id;
+    var id = req.param('id');
 
     if (!id) {
         res.send('No entity id given.\n', 400);
@@ -20,7 +30,7 @@ app.post('/editing_entity', function(req, res) {
 });
 
 app.post('/done_editing_entity', function(req, res) {
-    var id = req.query.id;
+    var id = req.param('id');
 
     if (!id) {
         res.send('No entity id given.\n', 400);
@@ -33,7 +43,7 @@ app.post('/done_editing_entity', function(req, res) {
 });
 
 app.get('/status', function(req, res) {
-    var id = req.query.id;
+    var id = req.param('id');
 
     if (!id) {
         res.send('No entity id given.\n', 400);
