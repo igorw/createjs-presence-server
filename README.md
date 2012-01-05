@@ -13,3 +13,7 @@ Sample implementation of a presence server for createjs.
 ### GET /status
     > id
     < true|false
+
+## License
+
+MIT, see LICENSE.
