@@ -12,15 +12,25 @@ Sample implementation of a presence server for createjs.
 
 ## Peudo-spec
 
-### POST /editing_entitiy
-    > id
+### Get presence status
 
-### POST /done_editing_entitiy
-    > id
+    GET /status
+    > id=foo
+    < 1
+    # or
+    < 0
 
-### GET /status
-    > id
-    < true|false
+### Announce presence
+
+    POST /presence
+    > id=foo
+    > state=1
+
+### Announce leave
+
+    POST /presence
+    > id=foo
+    > state=0
 
 ## License
 

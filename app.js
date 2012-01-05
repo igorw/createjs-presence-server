@@ -16,7 +16,7 @@ app.get('/', function(req, res) {
     res.send('createjs-presence-server');
 });
 
-app.post('/editing_entity', function(req, res) {
+app.get('/presence', function(req, res) {
     var id = req.param('id');
 
     if (!id) {
@@ -24,33 +24,25 @@ app.post('/editing_entity', function(req, res) {
         return;
     }
 
-    entities[id] = true;
-
-    res.send('-');
+    res.send(entities[id] ? '1' : '0');
 });
 
-app.post('/done_editing_entity', function(req, res) {
-    var id = req.param('id');
+app.post('/presence', function(req, res) {
+    var id = req.param('id'),
+        state = req.param('state');
 
     if (!id) {
         res.send('No entity id given.\n', 400);
         return;
     }
 
-    delete entities[id];
+    if (state) {
+        entities[id] = true;
+    } else {
+        delete entities[id];
+    }
 
     res.send('-');
-});
-
-app.get('/status', function(req, res) {
-    var id = req.param('id');
-
-    if (!id) {
-        res.send('No entity id given.\n', 400);
-        return;
-    }
-
-    res.send(entities[id] ? 'true' : 'false');
 });
 
 app.listen(1337);
