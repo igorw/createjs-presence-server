@@ -14,7 +14,7 @@ Sample implementation of a presence server for createjs.
 
 ### Get presence status
 
-    GET /status
+    GET /presence
     > id=foo
     < 1
     # or
